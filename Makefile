@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -g -Wall -std=c++11
+CFLAGS = -Wall -std=c++11
 OBJECTS = *.cpp
 
 test: $(OBJECTS)
