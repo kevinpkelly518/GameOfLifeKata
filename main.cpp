@@ -8,15 +8,6 @@
 #include <iostream>
 #include <sstream>
 
-
-namespace {
-
-
-
-
-} // end namespace
-
-
 int main(int argc, char** argv) {
   doctest::Context context;
 
@@ -30,13 +21,33 @@ int main(int argc, char** argv) {
 
   int client_result = 0;
 
-  std::ifstream file("Grids/kata");
+  std::string file_name;
+  std::cout << "Enter file: ";
+  std::cin >> file_name;
+
+  std::ifstream file(file_name);
+
   std::stringstream buffer;
   buffer << file.rdbuf();
 
-  auto grid = Life::parse(buffer.str());
-  grid.tick();
-  std::cout << Life::write(grid) << std::endl;
+  int generation_count = 1;
+  std::cout << "Enter number of generations to calculate: ";
+  std::cin >> generation_count;
+
+  for (int count = 0; count < generation_count; count++) {
+    auto grid = Life::parse(buffer.str());
+
+    grid.tick();
+
+    const auto next_generation = Life::write(grid);
+    std::cout << next_generation << std::endl;
+
+    buffer.str("");
+    buffer.clear();
+    buffer << next_generation;
+
+    sleep(1);
+  }
 
   return test_result + client_result;
 }
