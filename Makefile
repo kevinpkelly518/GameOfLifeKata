@@ -2,8 +2,16 @@ CC = g++
 CFLAGS = -Wall -std=c++11
 OBJECTS = *.cpp
 
-test: $(OBJECTS)
-	$(CC) $(OBJECTS) -o test $(CFLAGS)
+main: $(OBJECTS)
+	$(CC) $(OBJECTS) -o main $(CFLAGS)
+
+run: main
+	./main -nr
+	make clean
+
+test: main
+	./main -e
+	make clean
 
 clean:
-	rm test *.o
+	rm main

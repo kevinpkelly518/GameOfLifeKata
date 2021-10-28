@@ -29,6 +29,14 @@ void Grid::update() {
   }
 }
 
+void Grid::tick() {
+  generation++;
+
+  for (auto& cell : cells) {
+    cell.tick();
+  }
+}
+
 int Grid::get_generation() const {
   return generation;
 }

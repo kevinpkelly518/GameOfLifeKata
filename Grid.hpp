@@ -13,6 +13,7 @@ public:
   Grid(int rows, int cols);
 
   void update();
+  void tick();
   int size() const;
   int get_generation() const;
   void set_generation(int generation);
