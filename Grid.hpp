@@ -30,6 +30,7 @@ private:
   const int rows;
   const int cols;
   std::vector<Cell> cells;
+  int generation;
 };
 
 
